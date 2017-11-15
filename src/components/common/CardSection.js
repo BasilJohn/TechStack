@@ -10,7 +10,6 @@ const CardSection = (props) => {
     );
 };
 
-export { CardSection };
 
 const styles = {
 
@@ -24,3 +23,5 @@ const styles = {
        position: 'relative'
     }
 };
+
+export { CardSection };

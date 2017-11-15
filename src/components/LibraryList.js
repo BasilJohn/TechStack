@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListView } from 'react-native';
+import { ListView, Text, View } from 'react-native';
 import ListItem from './ListItem';
 
 class LibraryList extends React.Component {
 
-    componentWillUnmount() {
+    componentWillMount() {
         const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 != r2
+            rowHasChanged: (r1, r2) => r1 !== r2
         });
+        this.dataSource = ds.cloneWithRows(this.props.libraries)
 
-        this.state.dataSource = ds.cloneWithRows(this.props.libraries)
     }
 
     renderRow(library) {
@@ -18,7 +18,7 @@ class LibraryList extends React.Component {
     }
     render(props) {
         return (
-            <ListView dataSource={this.state.dataSource}
+            <ListView dataSource={this.dataSource}
                 renderRow={this.renderRow} />
         );
     }
